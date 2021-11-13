@@ -1,28 +1,27 @@
-// load the things we need
-var express = require('express');
-var app = express();
+const express = require('express')
+const cors = require('cors')
+const connectDB = require("./config/db");
+const cookieParser = require('cookie-parser')
+const app = express()
+const port = 5000
 
-// set the view engine to ejs
-app.set('view engine', 'ejs');
+app.use(express.json())
+app.use(cors())
+app.use(cookieParser())  //app.disable('view cache'); //Add?
 
-// index page 
-app.get('/', function(req, res) {
-    var mascots = [
-        { name: 'Alok Prasad', organization: "Hackstreet warriors", birth_year: 2001},
-        { name: 'Keshav Gautam', organization: "Hackstreet warriors", birth_year: 2001}
-    ];
-    var tagline = "Car pooling application";
+app.use("/", require("./routes/index"));
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/img', express.static(__dirname + 'public/img'))
+app.use('/views', express.static(__dirname + 'public/img'))
 
-    res.render('pages/index', {
-        mascots: mascots,
-        tagline: tagline
-    });
-});
+//app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
-// about page
-app.get('/about', function(req, res) {
-    res.render('pages/about');
-});
 
-app.listen(8080);
-console.log('8080 is the magic port');
+app.get('', (req,res)=> {
+    res.send("Ride share")
+})
+
+connectDB()
+app.listen(port, () => {console.log(`Listening on port ${port}`)})
