@@ -34,7 +34,7 @@ Fork the repository.
 
 Clone the repository -
 ```
-git clone https://github.com/keshavga1209/Goal_Diggers.git
+git clone git@github.com:Alok650/Hackstreet-Warriors.git
 ```
 
 1. Run `cd Goal_Diggers` on your CLI.
