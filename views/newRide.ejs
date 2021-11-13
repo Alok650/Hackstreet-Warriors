@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+      body {
+        background: #ECE9E6;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        
+        font-family: 'Montserrat', sans-serif;
+    }
+    </style>
+    <!-- <link rel="stylesheet" type="text/css" href="/css/profile.css" /> -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>New Ride</title>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div id="tabsswitch" class = "col s12 l6 offset-l3">
+                <ul class = "tabs">
+                   <li class = "tab col s6"><a class = "active" href = "#booked">Explore</a></li>
+                   <li class = "tab col s6"><a  href ="#new">
+                      New Form</a></li>
+                   
+                </ul>
+             </div>
+            <div id="new" class="col s12 l6 offset-l3 white-text card hoverable">
+                <div class="col s12 center">
+                    <h1 class="text-center teal-text light"><small>Enter ride details </small></h1>
+                </div>
+                <div class="divider"></div>  
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix orange-text">my_location</i>
+                    <input id="pickup" name="name" type="text" class="teal-text">
+                    <label for="pickup">Pickup Location</label>
+                    </div>
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix green-text">place</i>
+                    <input id="destination" name="name" type="text" class="teal-text">
+                    <label for="destination">Destination Location</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix light-blue-text">group</i>
+                      <input id="numberOfPeople" name="name" type="number" class="teal-text">
+                      <label for="numberOfPeople">Number of People</label>
+                      </div>
+                    <div class="divider"></div> 
+                    <div class="col s12">&nbsp;</div>
+                    
+                      <div class="row">
+                        <div class="col s12">
+                          <div class="col s4 grey-text">
+                            <div class="left">
+                              <big><i class="material-icons small purple-text">directions_car</i></big>
+                            </div>
+                            <div class="left"> &nbsp; &nbsp;Transport</div>
+                          </div>
+                          <div class="col s8 center teal-text">
+                            <div class="input-field col s12">
+                                <select  id="mode" class="teal-text">
+                                    <option value="" disabled selected>Choose your option</option>
+                                    <option value="1">Sedan</option>
+                                    <option value="2">SUV</option>
+                                    <option value="3">Hatchback</option>
+                                    <option value="3">Premium</option>
+                                </select>
+                                <label>Type of vehicle</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="input-field col s12">
+                      <i class="material-icons prefix yellow-text">event</i>
+                        <label for="traveldate" class="">Travel Date</label>
+                        <input id="traveldate" type="text" class="datepicker black-text">
+                    </div>
+
+                    
+
+                    <div class="col s12">&nbsp;</div>
+                    <div class="col s12 center">
+                        <button id="submit" type="Submit" class="col s12 btn light-green hoverable">Submit</button>
+                    </div>
+                <div class="col s12">&nbsp;</div>
+            </div>
+
+            <!-- show different rides-->
+
+            <div id= "booked" class="col s12 l6 offset-l3 white-text card hoverable" style="margin-top:2rem;">
+                <div class="col s12 center">
+                <h1 class="text-center teal-text light"><small>Find your ride</small></h1>
+                  </div>
+                <div class="divider"></div>  
+                
+                
+                
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix purple-text">event</i>
+                      <label for="filterdate" class="">Travel Date</label>
+                      <input id="filterdate" type="text" class="datepicker black-text">
+                  </div>
+                
+              
+                <div class="col s12 center">
+                <button type="filter" id="filter" class="col s12 btn orange hoverable" style="border-radius:5px;">Filter</button>
+                  </div>
+                <div class="col s12">&nbsp;</div>
+
+                <ul class="collection">
+                  <%for(let i=0; i<rides.length; i++){%>
+                    <%console.log(rides[0])%>
+                  <li class="collection-item avatar">
+                    <i class="material-icons circle">
+                      <div class="center-align">  <!--fix this-->
+                        <%if(rides[i].users.length>2){%>
+                          <i class="material-icons">groups</i>
+                        <%}else if(rides[i].users.length==2){%>
+                          <i class="material-icons">group</i>
+                        <%}else{%>
+                          <i class="material-icons">person</i>
+                        <%}%>
+                      </div>
+                    </i>
+                    <span class="title blue-text dark"><%=rides[i].initiatorName %></span>
+                    <!-- <p class="teal-text light"><%=rides[i].rideID %> <br></p> -->
+                    <p class="teal-text light"><%=rides[i].pickupPoint %> -> <%=rides[i].destination %> <br></p>
+                    <p class="purple-text light"><%=rides[i].travelDate.toDateString() %></p>  
+                    
+                    <a href="#!" name="addRide" id="<%=rides[i].rideID %>" class="secondary-content"><i class="material-icons">send</i></a>
+                  </li>
+                  <%}%>
+                </ul>
+              </div>
+        </div>
+    </div>
+    
+    <!-- testing -->
+    <!-- --------------------------------------------------------------------------------------------- -->
+    <!-- <p>Pickup: </p>
+    <input type="text" id="pickup">
+    <p>Destination</p>
+    <input type="text" id="destination">
+    <p>Booking Date</p>
+    <input type="text" id="bookingDate">
+    <p>Mode of Transport</p>
+    <input type="text" id="mode">
+    <button id="submit">Submit</button> -->
+    <!-- --------------------------------------------------------------------------------------------- -->
+    <!-- testing done - comment after testing-->
+</body>
+<script type="text/javascript" src="js/ride.js"></script>
+</html>
