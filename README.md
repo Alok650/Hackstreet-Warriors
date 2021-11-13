@@ -37,7 +37,7 @@ Clone the repository -
 git clone git@github.com:Alok650/Hackstreet-Warriors.git
 ```
 
-1. Run `cd Goal_Diggers` on your CLI.
+1. Run `cd Hackstreet-Warriors` on your CLI.
 
 2. Install the dependencies by running
     ```
@@ -46,7 +46,7 @@ git clone git@github.com:Alok650/Hackstreet-Warriors.git
 3. make .env file and following:
     ```
    MONGOURI = 'mongodb://localhost:{DB_PORT}/{yourDBname}'
-   JWT_SECRET = 'shesellsseashellsontheseasho'
+   JWT_SECRET = 'octahackshackathon4.0'
    REFRESH TOKEN = 'ksjhksdjafhksajfgksajgfkjhgfsjgfkjgfjhgfjdgfkjhgfjhgfjhguy2g323'
     ```
 
