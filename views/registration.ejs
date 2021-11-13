@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/register.css" />
+	<link href="path/to/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+	<script src='https://unpkg.com/tesseract.js@2.1.4/dist/tesseract.min.js'></script>
+	<title>Car Pooling</title>
+</head>
+<body>
+
+	<p id="desktop" style="display:none;">Please view on desktop</p>
+    <!-- <h2>Share Car</h2> -->
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form >
+			<h1>Create Account</h1>
+
+			<input type="text" placeholder="Name" autocomplete="off" id="signupName"/>
+			<input type="email" placeholder="Email" autocomplete="off" id="signupEmail"/>
+			<input type="number" placeholder="Age" autocomplete="off" id="age"/>
+			<input type="email" placeholder="Mobile Number" autocomplete="off" id="mobile"/>
+			<input type="password" placeholder="Password" autocomplete="off" id="signupPassword"/>
+			<input type="password" placeholder="Re-type Password" autocomplete="off" id="rePassword"/>
+			<!-- <input type="file" multiple="false" accept="image/*" id=finput onchange="upload()"> -->
+			<!-- <label for="import" class="btn" style="cursor: pointer;margin:0px;">Upload ID</label> -->
+			<input type="file" id="import" accept="image/*"></input>
+
+			<!-- <select id="lang">
+				<option value='eng' selected> English </option>
+			</select> -->
+			<% console.log("hi") %>
+		<div id="recognizedText"></div>
+		<!-- <div id="recognizedGender"></div> -->
+		
+		<input type="text" placeholder="Gender" autocomplete="off" id="signupGender" value="" disabled>
+
+			<button id="signupButton">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form >
+			<h1>Sign in</h1>
+
+			<input type="email" placeholder="Email or Mobile Number" autocomplete="off" id="loginEmail"/>
+			<input type="password" placeholder="Password" autocomplete="off" id="loginPassword"/>
+			<br>
+			<button id="loginButton">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your personal info</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Hello, Friend!</h1>
+				<p>Enter your personal details and start journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Alert -->
+
+
+<footer>
+	<p>
+		<strong>RIDE SHARE </strong>
+		Created with <i class="fa fa-heart"></i> by
+		<a target="_blank" href="https://github.com/Alokp650" target="_blank">Alok Prasad</a>, 
+		<a target="_blank" href="#">Keshav Gautam</a> 
+	</p>
+</footer>
+
+<%- include("alert") %> 
+</body>
+<script type="text/javascript" src="js/register.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<script src="js/ocr.js"></script>
+</html>
