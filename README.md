@@ -1,3 +1,5 @@
-# ejs-demo
+# OctaHacks 4.0 submission
 
-This is demo code for a DigitalOcean tutorial here: https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
+## Team name: Hackstreet warriors
+
+### Project name: Ride share: An aplication for car pooling.
