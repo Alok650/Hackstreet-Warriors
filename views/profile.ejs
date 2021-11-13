@@ -17,6 +17,212 @@
   <center>
     <h2 >Dashboard</h2>
   </center>
-    <h3>Profile details</h3>
+    <div id="main">
+        <div class="wrapper">
+            <div class="container">
+                <!-- //////////////////////////////////////////////////////////////////////////// -->
+                <div id="work-collections">
+                  <div class="row">
+                    <div class="col s12 m6 l5">
+                      <div id="profile-card" class="card">
+
+                        <div class="card-content">
+                          
+                          
+        
+                          <span class="card-title activator grey-text text-darken-4"><b><%= user.name%></b></span>
+                          <div class="col s3"></div>
+                            <div id="project-line-1"><canvas width="135" height="30" style="display: inline-block; width: 135px; height: 30px; vertical-align: top;"></canvas></div>
+                          <p class="mdi-action-perm-phone-msg cyan-text text-darken-3"><%=user.age%>, <%=user.gender%></p>
+                          <p class="mdi-action-perm-phone-msg cyan-text text-darken-2"><%=user.mobileNumber%></p>
+                          <p class="mdi-communication-email cyan-text text-darken-2"><%=user.email%></p>
+                          <p>Total Rides: <i class="mdi-action-perm-identity cyan-text text-darken-4"><b><%=rides.length%></b></i></p>
+                          <a class="orange waves-effect waves-light btn" id="edit" href="#modal1">EDIT</a>
+                          <a class="red waves-effect waves-light btn" id="logout" href="/api/logout">LOGOUT</a>
+                        </div>
+                        <!-- Modal Structure -->
+                          <div id="modal1" class="modal modal-fixed-footer">
+                            <div class="modal-content">
+                              <h4>Edit Details</h4>
+                              <div class="col s6">
+                                <form class="">
+                                  <div class="row">
+                                    <div class="input-field col s12">
+                                      <input id="Name" type="text" class="validate">
+                                      <label for="Name">New name</label>
+                                    </div>
+                                      <div class="input-field col s12">
+                                        <input id="Email" type="email" class="validate">
+                                        <label for="Email">New Email</label>
+                                      </div>
+                                      <div class="input-field col s12">
+                                        <input id="MobileNumber" type="text" class="validate">
+                                        <label for="Mobile Number">New mobile number</label>
+                                      </div>
+                                      <div class="input-field col s12">
+                                        <button type="submit" id="editButton" class="waves-effect waves-light btn">Update</button>
+                                      </div>  
+                                  </div>	
+                                  </form>
+                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                              <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+        
+                    <div class="col s12 m12 l7">
+                      <ul id="projects-collection" class="collection">
+                        <li class="collection-item avatar">
+                          <i class="material-icons circle green">
+                            commute
+                            
+                          </i>
+                          <span class="collection-header">Rides</span>
+                          <p>History</p>
+                          <a href="#" class="secondary-content"><i class="mdi-action-grade"></i></a>
+                        </li>
+                        <% let colours = {"Sedan" : "cyan", "SUV": "green", "Hatchback": "blue", "Premium": "orange"} %>
+                        <% var d = new Date()%>
+                        <%if(rides.length!=0){%>
+                        <% for(let i=0; i<rides.length; i++){ %>
+                          
+                        <% if(rides[i].travelDate.getTime()<Date.now()){ %>
+                          
+                        <li class="collection-item grey lighten-4"  >
+                          <%}else{%>
+                            <li class="collection-item">
+                              
+                          <%}%>
+                          <%var userDetails = JSON.stringify(rides[i].userDetails)%>
+                          <%var places = `${rides[i].pickupPoint} -> ${rides[i].destination}`%>
+                          <%var initiatorName = rides[i].userDetails.find(({userID}) => userID == rides[i].rideInitiator).name%>
+                          <!-- <%console.log(initiatorName)%> -->
+                          <a style="color:inherit" href="#modal2" places="<%= places%>" userDetails="<%=userDetails%>" rideInitiator="<%=initiatorName%>" index="<%=i%>" id="<%=rides[i].rideInitiator%>">
+                          <div class="row">
+                            <div class="col s6">
+                              <p class="collections-title "><%=rides[i].pickupPoint%></p>
+                              <p class="collections-content"><%=rides[i].destination%></p>
+                              <p class="collections-title"><%=rides[i].travelDate.toDateString()%></p>
+                            </div>
+                            <div class="col s3">
+                              <span class="task-cat <%=colours[rides[i].modeOfTransport]%>"><%=rides[i].modeOfTransport%></span>
+                            </div>
+                            <div class="col s3 right-align">
+                              <a name="deleteButton" class="red lighten-1 waves-effect waves-light btn-small" id="<%=rides[i].rideID%>"><i class="material-icons">delete</i></a>
+                              <!-- <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a> -->
+                              <div id="project-line-1"><canvas width="135" height="30" style="display: inline-block; width: 135px; height: 30px; vertical-align: top;"></canvas></div>
+                            </div>
+                          </div>
+                        </a>
+                        </li>
+                      </a>
+                        <%}%>
+                        <%}else{%>
+                          <li class="collection-item red  lighten-4">
+                            <div class="row">
+                              <div class="col s6">
+                                <p class="collections-title">No rides yet</p>
+                               
+                              </div>
+                              
+                              <div class="col s3">
+                                <div id="project-line-1"><canvas width="135" height="30" style="display: inline-block; width: 135px; height: 30px; vertical-align: top;"></canvas></div>
+                              </div>
+                            </div>
+                          </li> 
+                          
+                          <%}%>
+                    </div>
+                    <div id="modal2" class="modal bottom-sheet" style="max-height: fit-content;">
+                      <div class="modal-content">
+                        <h5 id="modaltitle"></h5>
+                        <div style="display:flex;">
+                          <p class="collection-item " >Ride Initiator: </p>
+                          <div>&nbsp;&nbsp;&nbsp;</div>
+                          <p class="collection-title" id="rideinitiator"></p>
+                       </div>
+                       
+                          <!-- <div class="col s4">
+                            <span></span>
+                            <p class="collection-item col s6 " >Ride Initiator: </p>
+                            <p class="collection-title col s6 " id="rideinitiator"></p>
+                          </div> -->
+                        
+                        <p class="collection-item left-align" >Possible Riders: </p>
+                        <p class="collection-item left-align" id="noridersfound"></p>
+                        <ol id="userlist">
+
+                        </ol>
+                        
+                      
+                      </div>
+                      <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                    <a class="btn-floating btn-large red" href="/newride">
+                      <i class="material-icons">add</i>
+                    </a>
+                    
+                  </div>
+        </div>
+        
+    </div>
+    
+  
+</body>
+<script>
+  var viewButtons = document.querySelectorAll('a[href="#modal2"]')
+
+viewButtons.forEach(view => {
+    view.addEventListener('click', ()=> {
+        var elems = document.getElementById('modal2');
+        var instances = M.Modal.init(elems,{dismissible: false});
+        var userID = '<%= user.userID %>'
+        instances.open()
+        //var userData = '<%- JSON.stringify(rides) %>'
+        var userData = view.getAttribute('userdetails')
+        var data = JSON.parse(userData)
+        console.log(data);
+        document.getElementById('modaltitle').innerHTML = view.getAttribute('places')
+        document.getElementById("rideinitiator").innerHTML= view.getAttribute('rideInitiator')
+        var html = ""
+        for(let i=0; i<data.length && data.length>1; i++){
+          if(data[i].userID == userID){
+            console.log(data[i])
+            continue
+          }
+          html += `<li><div style="display:flex;">
+            <p class="collection-item " >${data[i].name}</p>
+            <div>&nbsp;&nbsp;&nbsp;</div>
+            <p class="collection-item " >${data[i].age}</p>
+            <div>&nbsp;&nbsp;&nbsp;</div>
+            <p class="collection-item " >${data[i].gender}</p>
+            <div>&nbsp;&nbsp;&nbsp;</div>
+            <p class="collection-title" >${data[i].mobileNumber}</p>
+            <div>&nbsp;&nbsp;&nbsp;</div>
+            <p class="collection-title" ">${data[i].email}</p>
+            </div>
+            </li>`
+            
+        }
+        if(html === "") {
+          document.getElementById("noridersfound").innerHTML = "No riders found yet!"
+          document.getElementById('userlist').innerHTML = ""
+        }else{
+          document.getElementById('userlist').innerHTML = html
+          document.getElementById("noridersfound").innerHTML = ""
+        }
+        
+        // console.log(userData)
+    })
+})
+</script>
 <script type="text/javascript" src="js/profile.js"></script>
 </html>
