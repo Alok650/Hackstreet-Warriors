@@ -1,11 +1,18 @@
 ## RIDESHARE
-Project for OctaHacks 4.0 <br>
+Project for OctaHacks 4.0 (2021) - Chitkara University<br>
+
+<img src="https://www.linkpicture.com/q/ss_rideshare_1.png" height="100%" alt="homepage"/>
 
 <br>
 A website for car pooling. But wait not just that. While signing up user has to upload hi ID card for gender verification. That way we are ensuring security of the traveller. Especially, women's safety is considered. They can car pool with whatever person they like.
 <br>
 <br>
- Project Video:
+<b>Presentation Link:</b>
+<br>
+ https://www.canva.com/design/DAEvla8yyGE/e8wQQfWTgRMTzX9E2tN93w/watch?utm_content=DAEvla8yyGE&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+<br>
+<br>
+<b>Project Video:</b>
 <br>
 https://drive.google.com/file/d/1Yz_bZERSj2zkUSB4Xa6846xiXu9Tex5z/view?usp=sharing
 <br> 
